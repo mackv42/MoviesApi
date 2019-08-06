@@ -80,3 +80,7 @@ C:\Users\Vincent\source\repos\MovieApi\MovieApi\obj\Debug\MovieApi.csproj.CoreCo
 C:\Users\Vincent\source\repos\MovieApi\MovieApi\obj\Debug\MovieApi.csproj.CopyComplete
 C:\Users\Vincent\source\repos\MovieApi\MovieApi\obj\Debug\MovieApi.dll
 C:\Users\Vincent\source\repos\MovieApi\MovieApi\obj\Debug\MovieApi.pdb
+C:\Users\Vincent\source\repos\MovieApi\MovieApi\bin\EntityFramework.dll
+C:\Users\Vincent\source\repos\MovieApi\MovieApi\bin\EntityFramework.SqlServer.dll
+C:\Users\Vincent\source\repos\MovieApi\MovieApi\bin\EntityFramework.xml
+C:\Users\Vincent\source\repos\MovieApi\MovieApi\bin\EntityFramework.SqlServer.xml
