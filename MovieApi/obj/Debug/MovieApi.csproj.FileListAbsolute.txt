@@ -84,3 +84,5 @@ C:\Users\Vincent\source\repos\MovieApi\MovieApi\bin\EntityFramework.dll
 C:\Users\Vincent\source\repos\MovieApi\MovieApi\bin\EntityFramework.SqlServer.dll
 C:\Users\Vincent\source\repos\MovieApi\MovieApi\bin\EntityFramework.xml
 C:\Users\Vincent\source\repos\MovieApi\MovieApi\bin\EntityFramework.SqlServer.xml
+C:\Users\Vincent\source\repos\MovieApi\MovieApi\obj\Debug\MovieApi.Migrations.Movies.resources
+C:\Users\Vincent\source\repos\MovieApi\MovieApi\obj\Debug\MovieApi.csproj.GenerateResource.cache
