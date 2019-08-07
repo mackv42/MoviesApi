@@ -1,4 +1,4 @@
-function makeQuery( x ){
+function makeQuery( query, fir){
 	$.ajax({
 		type: 'POST',
 		
@@ -7,8 +7,8 @@ function makeQuery( x ){
 
 $("#enterQuery").on('click', function(){
 	//alert("This works");
-	var query = {};
+	var query = $("#query").val();
 	var selected  = $("#querySelect option:selected").val();
-	alert(selected);
+	makeQuery( query );
 	//if(query.)
 });

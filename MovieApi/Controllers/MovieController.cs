@@ -24,6 +24,30 @@ namespace MovieApi.Controllers
         {
             return context.Movies.ToList();
         }
+
+
+        public List<Movie> Get(string Category, string Query)
+        {
+            var urlKeyValues = ControllerContext.Request.GetQueryNameValuePairs();
+            Category = urlKeyValues.ToList()[0].Value;
+            string query = urlKeyValues.ToList()[1].Value;
+
+            List<Movie> ret = new List<Movie>();
+            switch( Category)
+            {
+                case "Director":
+                    ret = context.Movies.Where(x => x.Director == query).ToList();
+                    break;
+                case "Title":
+                    ret = context.Movies.Where(x => x.Title == query).ToList();
+                    break;
+                case "Genre":
+                    ret = context.Movies.Where(x => x.Genre == query).ToList();
+                    break;
+            }
+
+            return ret;
+        }
         // GET: Movie/Details/5
         public Movie Get(int id)
         {
