@@ -7,5 +7,8 @@ function makeQuery( x ){
 
 $("#enterQuery").on('click', function(){
 	//alert("This works");
-	
+	var query = {};
+	var selected  = $("#querySelect option:selected").val();
+	alert(selected);
+	//if(query.)
 });
