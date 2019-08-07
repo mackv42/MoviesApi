@@ -86,3 +86,6 @@ C:\Users\Vincent\source\repos\MovieApi\MovieApi\bin\EntityFramework.xml
 C:\Users\Vincent\source\repos\MovieApi\MovieApi\bin\EntityFramework.SqlServer.xml
 C:\Users\Vincent\source\repos\MovieApi\MovieApi\obj\Debug\MovieApi.Migrations.Movies.resources
 C:\Users\Vincent\source\repos\MovieApi\MovieApi\obj\Debug\MovieApi.csproj.GenerateResource.cache
+C:\Users\Vincent\source\repos\MovieApi\MovieApi\bin\Microsoft.Owin.dll
+C:\Users\Vincent\source\repos\MovieApi\MovieApi\bin\Owin.dll
+C:\Users\Vincent\source\repos\MovieApi\MovieApi\bin\Microsoft.Owin.xml

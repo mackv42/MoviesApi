@@ -1,0 +1,17 @@
+body{
+	background-color: #CCCCDD;
+}
+
+#container{
+	background-color: white;
+	margin: 0 auto;
+}
+
+#queryInput{
+	width: 500px;
+	margin: 0 auto;
+}
+
+.movie{
+	display: inline-block;
+}
