@@ -4,3 +4,8 @@ function makeQuery( x ){
 		
 	})
 }
+
+$("#enterQuery").on('click', function(){
+	//alert("This works");
+	
+});
