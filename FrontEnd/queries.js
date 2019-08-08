@@ -8,8 +8,29 @@ function makeQuery( cat, query){
 		success: function( data ){
 			alert(data);
 			myData = data;
-			console.log(data.Title);
+			myData.map(x => {
+				console.log(x.Title + " " + x.Director + " " +  x.Genre);
+			});
+			populateTable( myData );
 		}
+	}).then(null, function(){
+		
+	});
+}
+
+function populateTable( data ){
+	$("movieContainer").html = "";
+	data.map( x => {
+			$("#movieContainer").append(
+			'<div class="card movie" style="width: 18rem;">\
+			   <h4 style="text-align: center">'+ x.Title + '</h4>\
+			  <img class="card-img-top" src="..." alt="Card image cap">\
+			  <div class="card-body">\
+			    <h5 class="card-title">Card title</h5>\
+			    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>\
+			    <a href="#" class="btn btn-primary">Go somewhere</a>\
+			  </div>\
+			</div>')
 	});
 }
 

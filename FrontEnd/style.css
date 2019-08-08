@@ -10,8 +10,19 @@ body{
 #queryInput{
 	width: 500px;
 	margin: 0 auto;
+	text-align: center;
+}
+
+#query{
+	text-align: center;
+}
+
+#movieContainer{
+	display: inline-block;
+	margin: 0 auto;
 }
 
 .movie{
 	display: inline-block;
+	margin: 0 auto;
 }
