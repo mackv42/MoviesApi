@@ -79,7 +79,7 @@ namespace MovieApi.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody]JObject value)
+        public void Post([FromBody]string value)
         {
             JToken token = value;
             Movie add = new Movie();
@@ -113,11 +113,11 @@ namespace MovieApi.Controllers
             }
             if (!String.IsNullOrEmpty(Title))
             {
-                found.Director = Title;
+                found.Title = Title;
             }
             if (!String.IsNullOrEmpty(Genre))
             {
-                found.Director = Genre;
+                found.Genre = Genre;
             }
 
             context.SaveChanges();

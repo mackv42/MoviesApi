@@ -1,5 +1,5 @@
 let myData = {};
-function makeQuery( cat, query){
+function makeQuery( cat, query ){
 	let ourDat
 	$.ajax({
 		url: "https://localhost:44375/api/movie/?Category=" +  cat + "&Query=" + query,
@@ -19,10 +19,41 @@ function makeQuery( cat, query){
 function editMovie( id ){
 	//<input type="text-box" value='+x.Title+' style="border: none; width: 100%; height: 50px; text-align:center"/>
 	var movieDiv = document.getElementById("movie" + myData[id].Id);
-	movieDiv.getElementsByClassName("title")[0].innerHTML = '<input type="text-box" value="'+myData[id].Title+'" style="border: none; width: 100%; height: 50px; text-align:center"/>';
-	movieDiv.getElementsByClassName("director")[0].innerHTML =  '<input type="text-box" value="'+myData[id].Director+'" style="border: none; width: 100%; height: 50px; text-align:center"/>';
-	movieDiv.getElementsByClassName("genre")[0].innerHTML =  '<input type="text-box" value="'+myData[id].Genre+'" style="border: none; width: 100%; height: 50px; text-align:center"/>'
+	var titleDiv = movieDiv.getElementsByClassName("title")[0];
+	var genreDiv = movieDiv.getElementsByClassName("genre")[0];
+	var directorDiv = movieDiv.getElementsByClassName("director")[0];
+
+	titleDiv.innerHTML = '<input type="text-box" value="'+myData[id].Title+'" style="border: none; width: 100%; height: 50px; text-align:center"/>';
+	directorDiv.innerHTML =  '<input type="text-box" value="'+myData[id].Director+'" style="border: none; width: 100%; height: 50px; text-align:center"/>';
+	genreDiv.innerHTML =  '<input type="text-box" value="'+myData[id].Genre+'" style="border: none; width: 100%; height: 50px; text-align:center"/>';
+
+	var title = titleDiv.getElementsByTagName("input")[0].value;
+	var director =  directorDiv.getElementsByTagName("input")[0].value;
+	var genre =  genreDiv.getElementsByTagName("input")[0].value;
+	 $(".title input").on("change", function(){
+	 	title = this.value;
+	 });
+	 $(".genre input").on("change", function(){
+	 	genre = this.value;
+	 });
+	 $(".director input").on("change", function(){
+	 	genre = this.value;
+	 });
 	$("#"+id).html("Update");
+	$("#"+id).on("click", function(){
+			$.ajax({
+				url: "https://localhost:44375/api/movie/" + myData[id].Id,
+				type: "PUT",
+				data:{
+					"Title": title,
+					"Director": director,
+					"Genre": genre
+				},
+				success: function(){
+					//makeQuery()
+				}
+			})
+	});
 	//$("#movie" + id + " .title").html('<input type="text-box" value='+myData[id].Title+' style="border: none; width: 100%; height: 50px; text-align:center"/>');
 }
 
@@ -33,9 +64,7 @@ function populateTable( data ){
 			$("#movieContainer").append(
 			'<div class="card movie" id="movie'+ x.Id +'" style="width: 18rem;">\
 			  <div> <h4 style="text-align: center" class="title">'+ x.Title + '</h4></div>\
-			  <img class="card-img-top" src="..." alt="Card image cap">\
 			  <div class="card-body">\
-			    <h5 class="card-title">Card title</h5>\
 			    <p class="card-text">Director: <span class="director">' + x.Director +' </span><br/>Genre: <span class="genre">' + x.Genre + '</span></p>\
 			    <a id="'+ i++ + '" href="#" class="btn btn-primary editMovie">Edit</a>\
 			  </div>\
