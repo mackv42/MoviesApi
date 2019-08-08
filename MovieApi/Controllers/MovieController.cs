@@ -79,7 +79,7 @@ namespace MovieApi.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]JObject value)
         {
             JToken token = value;
             Movie add = new Movie();
@@ -88,15 +88,6 @@ namespace MovieApi.Controllers
             add.Genre = (string)token.SelectToken("Genre");
             context.Movies.Add(add);
             context.SaveChanges();
-            //int totalPages = (int)token.SelectToken("total_pages");
-            /*
-            Movie add = new Movie();
-            add.Director = value.Value(new Movie());
-            add.Title = value[0]["Title"];
-            add.Genre = value[0]["Genre"];
-
-            context.Movies.Add(add);
-            context.SaveChanges();*/
         }
 
         // PUT api/values/5

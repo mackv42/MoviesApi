@@ -1,6 +1,6 @@
 let myData = {};
+var addMovieDivHTML = document.getElementById("movieContainer").innerHTML;
 function makeQuery( cat, query ){
-	let ourDat
 	$.ajax({
 		url: "https://localhost:44375/api/movie/?Category=" +  cat + "&Query=" + query,
 		type: 'GET',
@@ -16,8 +16,88 @@ function makeQuery( cat, query ){
 	})
 }
 
+function getMovie( id ){
+	var movie = {};
+	$.ajax({
+		url: "https://localhost:44375/api/movie/" + id,
+		type: 'GET',
+		dataType: 'json',
+		success: function( data ){
+			movie = data;
+			$("#movieContainer").html(
+			'<div class="card movie" id="movie'+ movie.Id +'" style="width: 18rem;">\
+			  <div> <h4 style="text-align: center" class="title">'+ movie.Title + '</h4></div>\
+			 div class="card-body">\
+			 <p class="card-text">Director: <span class="director">' + movie.Director +' </span><br/>Genre: <span class="genre">' + x.Genre + '</span></p>\
+			<a id="'+ i++ + '" href="#" class="btn btn-primary editMovie">Edit</a>\
+			  </div>\
+			</div>' + addMovieDivHTML);
+		}
+	})
+}
+
+function populateTable( data ){
+	$("#movieContainer").html("");
+	var i =0;
+	data.map( x => {
+			$("#movieContainer").append(
+			'<div class="card movie" id="movie'+ x.Id +'" style="width: 18rem;">\
+			  <div> <h4 style="text-align: center" class="title">'+ x.Title + '</h4></div>\
+			  <div class="card-body">\
+			    <p class="card-text">Director: <span class="director">' + x.Director +' </span><br/>Genre: <span class="genre">' + x.Genre + '</span></p>\
+			    <a id="'+ i++ + '" href="#" class="btn btn-primary editMovie">Edit</a>\
+			  </div>\
+			</div>')
+	});
+
+	$("#movieContainer").append(addMovieDivHTML);
+
+	var queried = $(".editMovie");
+	var editorList = [];
+	$(".editMovie").on("click", function(e){
+		e.preventDefault();
+		editMovie(this.id);
+	})
+
+	console.log(queried);
+}
+
+$("#enterQuery").on('click', function(){
+	//alert("This works");
+	var query = $("#query").val();
+	var selected  = $("#querySelect option:selected").val();
+	makeQuery( selected, query );
+	//if(query.)
+});
+
+$("#addMovieBtn").on("click", function(e){
+	e.preventDefault();
+	var movieDiv = document.getElementById("addMovie");
+	var titleDiv = movieDiv.getElementsByClassName("title")[0];
+	var genreDiv = movieDiv.getElementsByClassName("genre")[0];
+	var directorDiv = movieDiv.getElementsByClassName("director")[0];
+
+	var addDirector = directorDiv.getElementsByTagName("input")[0].value;
+	var addGenre = genreDiv.getElementsByTagName("input")[0].value;
+	var addTitle = titleDiv.getElementsByTagName("input")[0].value;
+
+	console.log(addGenre);
+	console.log(addTitle);
+	$.ajax({
+		type: "POST",
+		url: "https://localhost:44375/api/movie/",
+		data:{
+			"Title": addTitle,
+			"Director": addDirector,
+			"Genre": addGenre
+		},
+		success: function(){
+			populateTable( [] );
+		}
+	})
+});
+
 function editMovie( id ){
-	//<input type="text-box" value='+x.Title+' style="border: none; width: 100%; height: 50px; text-align:center"/>
 	var movieDiv = document.getElementById("movie" + myData[id].Id);
 	var titleDiv = movieDiv.getElementsByClassName("title")[0];
 	var genreDiv = movieDiv.getElementsByClassName("genre")[0];
@@ -37,7 +117,7 @@ function editMovie( id ){
 	 	genre = this.value;
 	 });
 	 $(".director input").on("change", function(){
-	 	genre = this.value;
+	 	director = this.value;
 	 });
 	$("#"+id).html("Update");
 	$("#"+id).on("click", function(){
@@ -50,54 +130,8 @@ function editMovie( id ){
 					"Genre": genre
 				},
 				success: function(){
-					//makeQuery()
+					makeQuery(id);
 				}
 			})
 	});
-	//$("#movie" + id + " .title").html('<input type="text-box" value='+myData[id].Title+' style="border: none; width: 100%; height: 50px; text-align:center"/>');
 }
-
-function populateTable( data ){
-	$("#movieContainer").html("");
-	var i =0;
-	data.map( x => {
-			$("#movieContainer").append(
-			'<div class="card movie" id="movie'+ x.Id +'" style="width: 18rem;">\
-			  <div> <h4 style="text-align: center" class="title">'+ x.Title + '</h4></div>\
-			  <div class="card-body">\
-			    <p class="card-text">Director: <span class="director">' + x.Director +' </span><br/>Genre: <span class="genre">' + x.Genre + '</span></p>\
-			    <a id="'+ i++ + '" href="#" class="btn btn-primary editMovie">Edit</a>\
-			  </div>\
-			</div>')
-	});
-
-	var queried = $(".editMovie");
-	var editorList = [];
-	$(".editMovie").on("click", function(e){
-		e.preventDefault();
-		editMovie(this.id);
-	})
-	/*
-	for(var i=0; i<queried.length; i++){
-		$(queried[i]).on("click", function(){
-				editorList[i] = i-1;
-				console.log(i-1);
-				yield editMovie(editorList[i-1]);
-		});
-	}*/
-	console.log(queried);
-	/*
-	$(".editMovie").on("click", function(){
-			console.log(this.id);
-			editTable(this.id);
-	});*/
-}
-
-$("#enterQuery").on('click', function(){
-	//alert("This works");
-	var query = $("#query").val();
-	var selected  = $("#querySelect option:selected").val();
-	makeQuery( selected, query );
-	//if(query.)
-});
-
