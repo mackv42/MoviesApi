@@ -13,15 +13,16 @@ function makeQuery( cat, query){
 			});
 			populateTable( myData );
 		}
-	}).then(null, function(){
-		
-	});
+	})
 }
 
 function editMovie( id ){
 	//<input type="text-box" value='+x.Title+' style="border: none; width: 100%; height: 50px; text-align:center"/>
-	document.getElementById("movie" + myData[id].Id).getElementsByClassName("title")[0].innerHTML = '<input type="text-box" value="'+myData[id].Title+'" style="border: none; width: 100%; height: 50px; text-align:center"/>';
-	console.log(myData[id]);
+	var movieDiv = document.getElementById("movie" + myData[id].Id);
+	movieDiv.getElementsByClassName("title")[0].innerHTML = '<input type="text-box" value="'+myData[id].Title+'" style="border: none; width: 100%; height: 50px; text-align:center"/>';
+	movieDiv.getElementsByClassName("director")[0].innerHTML =  '<input type="text-box" value="'+myData[id].Director+'" style="border: none; width: 100%; height: 50px; text-align:center"/>';
+	movieDiv.getElementsByClassName("genre")[0].innerHTML =  '<input type="text-box" value="'+myData[id].Genre+'" style="border: none; width: 100%; height: 50px; text-align:center"/>'
+	$("#"+id).html("Update");
 	//$("#movie" + id + " .title").html('<input type="text-box" value='+myData[id].Title+' style="border: none; width: 100%; height: 50px; text-align:center"/>');
 }
 
@@ -35,7 +36,7 @@ function populateTable( data ){
 			  <img class="card-img-top" src="..." alt="Card image cap">\
 			  <div class="card-body">\
 			    <h5 class="card-title">Card title</h5>\
-			    <p class="card-text">Director: <span class="director"></span><br/> >Genre: <span class="genre"></span></p>\
+			    <p class="card-text">Director: <span class="director">' + x.Director +' </span><br/>Genre: <span class="genre">' + x.Genre + '</span></p>\
 			    <a id="'+ i++ + '" href="#" class="btn btn-primary editMovie">Edit</a>\
 			  </div>\
 			</div>')
