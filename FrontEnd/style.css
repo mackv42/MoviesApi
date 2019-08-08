@@ -1,4 +1,8 @@
 body{
+	background-image: url("film.jpg");
+	background-size: 400px 100px;
+	background-repeat: repeat-y repeat-x;
+
 	background-color: #CCCCDD;
 }
 
