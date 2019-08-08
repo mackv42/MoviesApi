@@ -25,9 +25,11 @@ body{
 .movie{
 	display: inline-block;
 	margin: 0 auto;
+	align-items:   center;
 }
 
 #addMovie{
 	display: inline-block;
 	margin: 0 auto;
+	border-color: #009F00;
 }
