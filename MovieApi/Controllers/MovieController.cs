@@ -100,8 +100,27 @@ namespace MovieApi.Controllers
         }
 
         // PUT api/values/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]JObject value)
         {
+            var found = context.Movies.Where(x => x.Id == id).FirstOrDefault();
+            JToken token = value;
+            string Director = (string)token.SelectToken("Director");
+            string Title = (string)token.SelectToken("Title");
+            string Genre = (string)token.SelectToken("Genre");
+            if (!String.IsNullOrEmpty(Director))
+            {
+                found.Director = Director;
+            }
+            if (!String.IsNullOrEmpty(Title))
+            {
+                found.Director = Title;
+            }
+            if (!String.IsNullOrEmpty(Genre))
+            {
+                found.Director = Genre;
+            }
+
+            context.SaveChanges();
             // Update movie in db logic
         }
     }
