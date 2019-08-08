@@ -1,9 +1,13 @@
 body{
-	background-image: url("film.jpg");
+	background-image: url("bitmap.png");
 	background-size: 400px 100px;
 	background-repeat: repeat-y repeat-x;
 
 	background-color: #CCCCDD;
+}
+
+input{
+	width: 10%;
 }
 
 #container{
