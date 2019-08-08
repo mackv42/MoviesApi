@@ -18,12 +18,18 @@ function makeQuery( cat, query){
 	});
 }
 
+function editTable( id ){
+	//<input type="text-box" value='+x.Title+' style="border: none; width: 100%; height: 50px; text-align:center"/>
+	$(".movie #"+id + " " + title).html = "";
+	
+}
+
 function populateTable( data ){
-	$("movieContainer").html = "";
+	$("#movieContainer").html = "";
 	data.map( x => {
 			$("#movieContainer").append(
-			'<div class="card movie" style="width: 18rem;">\
-			   <h4 style="text-align: center">'+ x.Title + '</h4>\
+			'<div class="card movie" id="movie'+ x.Id +'" style="width: 18rem;">\
+			   <h4 style="text-align: center" id="title">'+ x.Title + '</h4>\
 			  <img class="card-img-top" src="..." alt="Card image cap">\
 			  <div class="card-body">\
 			    <h5 class="card-title">Card title</h5>\
