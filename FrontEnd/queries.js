@@ -18,26 +18,49 @@ function makeQuery( cat, query){
 	});
 }
 
-function editTable( id ){
+function editMovie( id ){
 	//<input type="text-box" value='+x.Title+' style="border: none; width: 100%; height: 50px; text-align:center"/>
-	$(".movie #"+id + " " + title).html = "";
-	
+	document.getElementById("movie" + myData[id].Id).getElementsByClassName("title")[0].innerHTML = '<input type="text-box" value="'+myData[id].Title+'" style="border: none; width: 100%; height: 50px; text-align:center"/>';
+	console.log(myData[id]);
+	//$("#movie" + id + " .title").html('<input type="text-box" value='+myData[id].Title+' style="border: none; width: 100%; height: 50px; text-align:center"/>');
 }
 
 function populateTable( data ){
-	$("#movieContainer").html = "";
+	$("#movieContainer").html("");
+	var i =0;
 	data.map( x => {
 			$("#movieContainer").append(
 			'<div class="card movie" id="movie'+ x.Id +'" style="width: 18rem;">\
-			   <h4 style="text-align: center" id="title">'+ x.Title + '</h4>\
+			  <div> <h4 style="text-align: center" class="title">'+ x.Title + '</h4></div>\
 			  <img class="card-img-top" src="..." alt="Card image cap">\
 			  <div class="card-body">\
 			    <h5 class="card-title">Card title</h5>\
-			    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>\
-			    <a href="#" class="btn btn-primary">Go somewhere</a>\
+			    <p class="card-text">Director: <span class="director"></span><br/> >Genre: <span class="genre"></span></p>\
+			    <a id="'+ i++ + '" href="#" class="btn btn-primary editMovie">Edit</a>\
 			  </div>\
 			</div>')
 	});
+
+	var queried = $(".editMovie");
+	var editorList = [];
+	$(".editMovie").on("click", function(e){
+		e.preventDefault();
+		editMovie(this.id);
+	})
+	/*
+	for(var i=0; i<queried.length; i++){
+		$(queried[i]).on("click", function(){
+				editorList[i] = i-1;
+				console.log(i-1);
+				yield editMovie(editorList[i-1]);
+		});
+	}*/
+	console.log(queried);
+	/*
+	$(".editMovie").on("click", function(){
+			console.log(this.id);
+			editTable(this.id);
+	});*/
 }
 
 $("#enterQuery").on('click', function(){
@@ -47,3 +70,4 @@ $("#enterQuery").on('click', function(){
 	makeQuery( selected, query );
 	//if(query.)
 });
+
