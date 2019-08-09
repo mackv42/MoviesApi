@@ -45,6 +45,15 @@ input{
 	margin: 0 auto;
 }
 
+.movie input{
+	width: 40%;
+}
+
+.title input{
+	text-align: center;
+	width: 100%;
+}
+
 #addMovie{
 	display: inline-block;
 	margin: 0 auto;

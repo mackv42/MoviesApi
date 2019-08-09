@@ -100,10 +100,10 @@ function editMovie( id ){
 	var titleDiv = movieDiv.getElementsByClassName("title")[0];
 	var genreDiv = movieDiv.getElementsByClassName("genre")[0];
 	var directorDiv = movieDiv.getElementsByClassName("director")[0];
-
-	titleDiv.innerHTML = '<input type="text-box" value="'+myData[id].Title+'" style="border: none; width: 100%; height: 50px; text-align:center"/>';
-	directorDiv.innerHTML =  '<input type="text-box" value="'+myData[id].Director+'" style="border: none; width: 100%; height: 50px; text-align:center"/>';
-	genreDiv.innerHTML =  '<input type="text-box" value="'+myData[id].Genre+'" style="border: none; width: 100%; height: 50px; text-align:center"/>';
+	movieDiv.style.borderColor = "yellow";
+	titleDiv.innerHTML = '<input type="text-box" value="'+myData[id].Title+'" style="border: none;"/>';
+	directorDiv.innerHTML =  '<input type="text-box" value="'+myData[id].Director+'" style="border: none;"/>';
+	genreDiv.innerHTML =  '<input type="text-box" value="'+myData[id].Genre+'" style="border: none;"/>';
 
 	var title = titleDiv.getElementsByTagName("input")[0].value;
 	var director =  directorDiv.getElementsByTagName("input")[0].value;
