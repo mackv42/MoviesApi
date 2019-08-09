@@ -32,44 +32,24 @@ namespace MovieApi.Controllers
             var urlKeyValues = ControllerContext.Request.GetQueryNameValuePairs();
             
 
-            List<Movie> ret = new List<Movie>();
+            List<Movie> movieList = new List<Movie>();
             switch( Category )
             {
                 case "Director":
-                    ret = context.Movies.Where(x => x.Director == Query).ToList();
+                    movieList = context.Movies.Where(x => x.Director == Query).ToList();
                     break;
                 case "Title":
-                    ret = context.Movies.Where(x => x.Title == Query).ToList();
+                    movieList = context.Movies.Where(x => x.Title == Query).ToList();
                     break;
                 case "Genre":
-                    ret = context.Movies.Where(x => x.Genre == Query).ToList();
+                    movieList = context.Movies.Where(x => x.Genre == Query).ToList();
                     break;
             }
 
-            return ret;
+            return movieList;
         }
 
-        public List<Movie> Get(string Category, string Query, string dataType)
-        {
-            var urlKeyValues = ControllerContext.Request.GetQueryNameValuePairs();
-
-
-            List<Movie> ret = new List<Movie>();
-            switch (Category)
-            {
-                case "Director":
-                    ret = context.Movies.Where(x => x.Director == Query).ToList();
-                    break;
-                case "Title":
-                    ret = context.Movies.Where(x => x.Title == Query).ToList();
-                    break;
-                case "Genre":
-                    ret = context.Movies.Where(x => x.Genre == Query).ToList();
-                    break;
-            }
-
-            return ret;
-        }
+       
         // GET: Movie/Details/5
         public Movie Get(int id)
         {
