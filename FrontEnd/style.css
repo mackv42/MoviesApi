@@ -25,6 +25,14 @@ input{
 
 #query{
 	text-align: center;
+		font-family: cursive;
+}
+
+#enterQuery{
+	font-family: cursive;
+	width: 100%;
+	text-align: center;
+	background-color: lightgreen;
 }
 
 #movieContainer{
@@ -43,3 +51,4 @@ input{
 	margin: 0 auto;
 	border-color: #009F00;
 }
+
