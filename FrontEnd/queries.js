@@ -6,7 +6,6 @@ function makeQuery( cat, query ){
 		type: 'GET',
 		dataType: 'json',
 		success: function( data ){
-			alert(data);
 			myData = data;
 			myData.map(x => {
 				console.log(x.Title + " " + x.Director + " " +  x.Genre);
@@ -63,7 +62,6 @@ function populateTable( data ){
 }
 
 $("#enterQuery").on('click', function(){
-	//alert("This works");
 	var query = $("#query").val();
 	var selected  = $("#querySelect option:selected").val();
 	makeQuery( selected, query );
