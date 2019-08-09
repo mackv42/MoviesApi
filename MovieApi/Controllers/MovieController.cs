@@ -29,9 +29,6 @@ namespace MovieApi.Controllers
 
         public List<Movie> Get(string Category, string Query)
         {
-            var urlKeyValues = ControllerContext.Request.GetQueryNameValuePairs();
-            
-
             List<Movie> movieList = new List<Movie>();
             switch( Category )
             {

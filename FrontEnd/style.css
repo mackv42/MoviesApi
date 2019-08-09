@@ -43,7 +43,6 @@ input{
 .movie{
 	display: inline-block;
 	margin: 0 auto;
-	align-items:   center;
 }
 
 #addMovie{
